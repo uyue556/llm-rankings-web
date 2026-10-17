@@ -32,10 +32,14 @@
 - 触摸滑动：翻屏
 - 右下角 `◐`：切换明暗主题
 
+## 在线访问
+
+启用 GitHub Pages 后可直接访问：<https://uyue556.github.io/llm-rankings-web/>
+
 ## 数据与许可
 
 - 数据来自 [OpenRouter](https://openrouter.ai) Data API，许可协议为 **CC BY 4.0**，页面底部已附带 attribution。
-- 页面代码本身为纯静态 HTML/CSS/JS，无第三方运行时依赖（仅 Google Fonts）。
+- 页面代码本身为纯静态 HTML/CSS/JS，无第三方运行时依赖（仅 Google Fonts），代码以 [MIT](LICENSE) 许可发布。
 
 ## 辅助脚本
 
