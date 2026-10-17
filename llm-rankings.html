@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global LLM API Rankings — June 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fafafa;--grad:linear-gradient(135deg,#fafafa,#ececec,#f5f5f5);--card:#FF5722;--txt:#111;--txtc:#fff;--sub:rgba(0,0,0,.55);--warm:#FF8A65;--disp:'Archivo Black',sans-serif;--body:'Space Grotesk',sans-serif;--ease:cubic-bezier(.16,1,.3,1);--dur:.6s;--ts:clamp(1.7rem,5.2vw,4.2rem);--h2:clamp(1.5rem,3.8vw,2.9rem);--h3:clamp(1.15rem,2.7vw,2rem);--bs:clamp(.95rem,1.7vw,1.35rem);--ss:clamp(.8rem,1.2vw,1.05rem);--sp:clamp(1rem,4vw,4rem);--cg:clamp(.5rem,2vw,2rem);--srf:rgba(0,0,0,.03);--brd:rgba(0,0,0,.08);--barbg:rgba(0,0,0,.06);--hov:rgba(255,87,34,.05);--dotbg:rgba(0,0,0,.15);--kinbg:rgba(255,255,255,.6);--tabbrd:rgba(0,0,0,.12)}
+:root[data-theme=dark]{--bg:#141414;--grad:linear-gradient(135deg,#161616,#242424,#161616);--txt:#f2f2f2;--txtc:#fff;--sub:rgba(255,255,255,.62);--srf:rgba(255,255,255,.05);--brd:rgba(255,255,255,.1);--barbg:rgba(255,255,255,.08);--hov:rgba(255,87,34,.14);--dotbg:rgba(255,255,255,.22);--kinbg:rgba(255,255,255,.08);--tabbrd:rgba(255,255,255,.16)}
+*{margin:0;padding:0;box-sizing:border-box}html,body{height:100%;overflow-x:hidden}html{scroll-snap-type:y mandatory;scroll-behavior:smooth}
+.slide{width:100vw;height:100vh;height:100dvh;overflow:hidden;scroll-snap-align:start;display:flex;flex-direction:column;position:relative;background:var(--grad)}
+@media(max-height:700px){:root{--sp:clamp(.75rem,3vw,2rem);--cg:clamp(.4rem,1.5vw,1rem);--ts:clamp(1.4rem,4.5vw,2.8rem);--h2:clamp(1.2rem,3.2vw,2rem);--bs:clamp(.85rem,1.5vw,1.15rem)}}
+@media(max-height:600px){:root{--sp:clamp(.5rem,2.5vw,1.5rem);--cg:clamp(.3rem,1vw,.75rem);--ts:clamp(1.2rem,4vw,2.2rem);--bs:clamp(.78rem,1.2vw,1rem)}.nd,.kh{display:none}}
+@media(max-height:500px){:root{--sp:clamp(.4rem,2vw,1rem);--ts:clamp(1.1rem,3.5vw,1.7rem);--h2:clamp(1rem,2.5vw,1.5rem);--bs:clamp(.72rem,1vw,.92rem)}}
+@media(max-width:600px){:root{--ts:clamp(1.4rem,7vw,2.8rem);--ss:clamp(.78rem,2.4vw,1rem)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.2s!important}html{scroll-behavior:auto}}
+.pb{position:fixed;top:0;left:0;height:3px;background:var(--card);z-index:9999;transition:width .3s;width:0}
+.nd{position:fixed;right:clamp(12px,2vw,24px);top:50%;transform:translateY(-50%);z-index:9998;display:flex;flex-direction:column;gap:8px}
+.nt{width:10px;height:10px;border-radius:50%;background:var(--dotbg);border:none;cursor:pointer;transition:all .3s;padding:0}
+.nt.a{background:var(--card);transform:scale(1.3)}
+.kh{position:fixed;bottom:clamp(12px,2vh,20px);left:50%;transform:translateX(-50%);z-index:9998;font-family:var(--body);font-size:var(--ss);color:var(--sub);opacity:.5;transition:opacity .5s}
+.rv{opacity:0;transform:translateY(30px);transition:opacity var(--dur) var(--ease),transform var(--dur) var(--ease)}
+.sl .rv{opacity:1;transform:translateY(0)}
+.rv:nth-child(1){transition-delay:.1s}.rv:nth-child(2){transition-delay:.2s}.rv:nth-child(3){transition-delay:.3s}.rv:nth-child(4){transition-delay:.4s}.rv:nth-child(5){transition-delay:.5s}.rv:nth-child(6){transition-delay:.6s}
+.rs{opacity:0;transform:scale(.9);transition:opacity .6s,transform .6s var(--ease)}
+.sl .rs{opacity:1;transform:scale(1)}
+.ts{align-items:center;justify-content:center;text-align:center}
+.ts h1{font-family:var(--disp);font-size:var(--ts);line-height:1.05;color:var(--txt)}
+.ts .db{width:60px;height:4px;background:var(--card);margin:clamp(.5rem,1.5vh,1rem) auto}
+.ts .sub{font-size:var(--bs);color:var(--sub)}
+.ts .lb{display:inline-flex;align-items:center;gap:6px;font-family:var(--body);font-size:var(--ss);color:var(--card);border:1px solid rgba(255,87,34,.3);padding:.3em 1em;border-radius:2px;margin-top:clamp(.8rem,2vh,1.5rem)}
+.ts .lb .d{width:6px;height:6px;border-radius:50%;background:var(--card);animation:pu 2s ease-in-out infinite}
+@keyframes pu{0%,100%{opacity:1}50%{opacity:.3}}
+.cs{padding:var(--sp);justify-content:center}
+.cs .sh{display:flex;align-items:center;gap:clamp(.5rem,1.5vw,1rem);margin-bottom:var(--cg)}
+.cs h2{font-family:var(--disp);font-size:var(--h2);line-height:1.1;color:var(--txt)}
+.cs .bt{font-size:var(--bs);color:var(--sub);line-height:1.6;max-width:min(80vw,700px)}
+.ms{display:grid;grid-template-columns:1fr 1fr;padding:0;overflow:hidden}
+.ms .lp{display:flex;flex-direction:column;justify-content:center;padding:clamp(1.5rem,4vw,4rem);position:relative}
+.ms .rp{background:var(--card);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:clamp(1.5rem,3vw,3rem);position:relative;overflow:hidden}
+.ms .rp::before{content:'';position:absolute;inset:0;background:linear-gradient(45deg,transparent 40%,rgba(255,255,255,.08) 50%,transparent 60%);animation:sh 3s ease-in-out infinite}
+@keyframes sh{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.ms .rk{font-family:var(--disp);font-size:clamp(3rem,10vw,7rem);color:rgba(0,0,0,.06);line-height:1}
+.ms .mn{font-family:var(--disp);font-size:var(--h2);line-height:1.1;color:var(--txt);margin-top:clamp(.3rem,1vh,.5rem)}
+.ms .mp{font-size:var(--bs);color:var(--card);margin-top:clamp(.2rem,.5vh,.3rem);font-weight:600}
+.ms .md{font-size:var(--bs);color:var(--sub);line-height:1.5;margin-top:clamp(.5rem,1.5vh,1rem);max-width:min(40vw,400px)}
+.ms .sc2{position:relative;z-index:1;text-align:center}
+.ms .bn{font-family:var(--disp);font-size:clamp(2.5rem,8vw,6rem);color:var(--txtc);line-height:.9}
+.ms .sl2{font-size:var(--ss);color:rgba(26,26,26,.5);text-transform:uppercase;letter-spacing:.15em;margin-top:clamp(.3rem,.8vh,.5rem)}
+.ms .fl{list-style:none;margin-top:clamp(.8rem,2vh,1.5rem);display:flex;flex-direction:column;gap:clamp(.3rem,.8vh,.6rem)}
+.ms .fl li{font-size:var(--ss);color:var(--sub);display:flex;align-items:center;gap:8px}
+.ms .fl li::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--card);flex-shrink:0}
+.chs{padding:var(--sp)}
+.chs h2{font-family:var(--disp);font-size:var(--h2);color:var(--txt);margin-bottom:var(--cg);text-align:center}
+.cc{flex:1;display:flex;flex-direction:column;justify-content:center;gap:clamp(.15rem,.5vh,.35rem);max-height:min(78vh,620px)}
+.cr{display:grid;grid-template-columns:clamp(70px,11vw,130px) 1fr clamp(55px,8vw,85px);align-items:center;gap:clamp(.3rem,1vw,.8rem)}
+.cr .lb2{font-family:var(--body);font-size:var(--ss);color:var(--sub);text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cr .bt2{height:clamp(14px,2.2vh,24px);background:var(--barbg);border-radius:2px;overflow:hidden}
+.cr .bf{height:100%;background:var(--card);border-radius:2px;transition:width 1.2s var(--ease);width:0;position:relative}
+.cr .bf::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 60%,rgba(255,255,255,.15))}
+.cr .vl{font-family:var(--body);font-size:var(--ss);color:var(--txt);font-weight:600;text-align:left}
+.ts2{padding:var(--sp)}
+.ts2 h2{font-family:var(--disp);font-size:var(--h2);color:var(--txt);margin-bottom:var(--cg);text-align:center}
+.ct{width:100%;border-collapse:collapse;font-size:var(--ss)}
+.ct th{font-family:var(--body);font-weight:600;color:var(--card);text-align:left;padding:clamp(.3rem,.8vh,.6rem) clamp(.4rem,1vw,.8rem);border-bottom:2px solid rgba(255,87,34,.3);white-space:nowrap}
+.ct td{padding:clamp(.25rem,.6vh,.5rem) clamp(.4rem,1vw,.8rem);color:var(--sub);border-bottom:1px solid var(--brd)}
+.ct tr:hover td{background:var(--hov)}
+.ct .mc{color:var(--txt);font-weight:500}
+.ct .rc{font-family:var(--disp);color:var(--card);font-size:var(--bs)}
+.sms{align-items:center;justify-content:center;text-align:center}
+.sms h2{font-family:var(--disp);font-size:var(--ts);color:var(--txt);line-height:1.1}
+.sms .db{width:60px;height:4px;background:var(--card);margin:clamp(.8rem,2vh,1.5rem) auto}
+.sms .st{font-size:var(--bs);color:var(--sub);line-height:1.6;max-width:min(80vw,600px)}
+.sms .cta{display:inline-block;margin-top:clamp(1rem,3vh,2rem);font-family:var(--body);font-size:var(--bs);color:var(--txtc);background:var(--card);padding:.6em 2em;border-radius:2px;font-weight:600;text-decoration:none;transition:transform .3s,box-shadow .3s}
+.sms .cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,87,34,.3)}
+.sms .dn{font-size:var(--ss);color:var(--sub);margin-top:clamp(.5rem,1.5vh,1rem);opacity:.6}
+.mg{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:clamp(.5rem,1.5vw,1rem);margin-top:var(--cg)}
+.mc2{background:var(--srf);border:1px solid var(--brd);border-radius:4px;padding:clamp(.8rem,2vh,1.5rem);text-align:center}
+.mc2 .ic{font-size:clamp(1.5rem,3vw,2.5rem);margin-bottom:clamp(.3rem,.8vh,.5rem)}
+.mc2 h3{font-family:var(--disp);font-size:var(--h3);color:var(--txt);margin-bottom:clamp(.2rem,.5vh,.3rem)}
+.mc2 p{font-size:var(--ss);color:var(--sub);line-height:1.4}
+.lo{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:99999;transition:opacity .5s}
+.lo.h{opacity:0;pointer-events:none}
+.ls{width:40px;height:40px;border:3px solid rgba(0,0,0,.1);border-top-color:var(--card);border-radius:50%;animation:sp .8s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.lt{font-family:var(--body);font-size:var(--ss);color:var(--sub);margin-top:1rem}
+.ig{display:grid;grid-template-columns:1fr 1fr;gap:clamp(.5rem,1.5vw,1rem);margin-top:var(--cg)}
+.ic2{background:var(--srf);border:1px solid var(--brd);border-radius:4px;padding:clamp(.8rem,2vh,1.2rem);display:flex;align-items:flex-start;gap:clamp(.5rem,1vw,.8rem)}
+.ic2 .nm{font-family:var(--disp);font-size:clamp(1.5rem,3vw,2rem);color:var(--card);line-height:1;flex-shrink:0}
+.ic2 .tx{font-size:var(--ss);color:var(--sub);line-height:1.4}
+.qs{padding:var(--sp)}
+.qs h2{font-family:var(--disp);font-size:var(--h2);color:var(--txt);margin-bottom:var(--cg);text-align:center}
+.tabs{display:flex;justify-content:center;gap:clamp(.3rem,.8vw,.6rem);margin-bottom:var(--cg)}
+.tab{font-family:var(--body);font-size:var(--ss);padding:.5em 1.2em;border:2px solid var(--tabbrd);background:transparent;color:var(--sub);border-radius:2px;cursor:pointer;transition:all .3s}
+.tab.active{background:var(--card);color:var(--txtc);border-color:var(--card)}
+.tab:hover:not(.active){border-color:var(--card);color:var(--txt)}
+.qchart{display:flex;flex-direction:column;gap:clamp(.2rem,.6vh,.4rem);max-height:min(65vh,500px)}
+.qrow{display:grid;grid-template-columns:clamp(65px,10vw,120px) 1fr clamp(50px,7vw,75px);align-items:center;gap:clamp(.2rem,.8vw,.6rem)}
+.qrow .ql{font-family:var(--body);font-size:var(--ss);color:var(--sub);text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.qrow .qb{height:clamp(12px,2vh,20px);background:var(--barbg);border-radius:2px;overflow:hidden}
+.qrow .qf{height:100%;background:var(--card);border-radius:2px;transition:width 1s var(--ease);width:0}
+.qrow .qv{font-family:var(--body);font-size:var(--ss);color:var(--txt);font-weight:600;text-align:left}
+.qinfo{text-align:center;margin-top:var(--cg);font-size:var(--ss);color:var(--sub)}
+.qinfo strong{color:var(--txt)}
+.trend-up{color:#2e7d32}
+.trend-down{color:#c62828}
+.qgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(.4rem,1vw,.8rem);margin-top:var(--cg)}
+.qstat{background:var(--srf);border:1px solid var(--brd);border-radius:4px;padding:clamp(.6rem,1.5vh,1rem);text-align:center}
+.qstat .qn{font-family:var(--disp);font-size:clamp(1.2rem,2.5vw,1.8rem);color:var(--card);line-height:1}
+.qstat .ql2{font-size:var(--ss);color:var(--sub);margin-top:clamp(.2rem,.4vh,.3rem)}
+.keybox{display:flex;flex-direction:column;align-items:center;gap:.5rem;margin-top:clamp(1rem,3vh,2rem)}
+.kin{font-family:var(--body);font-size:var(--ss);padding:.55em 1em;border:1px solid rgba(0,0,0,.2);border-radius:3px;background:var(--kinbg);color:var(--txt);width:min(90vw,360px);outline:none}
+.kin:focus{border-color:var(--card)}
+.kbtn{font-family:var(--body);font-size:var(--ss);font-weight:600;padding:.5em 1.6em;border:none;border-radius:3px;background:var(--card);color:var(--txtc);cursor:pointer;transition:transform .2s}
+.kbtn:hover{transform:translateY(-1px)}
+.khint{font-size:var(--ss);color:var(--sub);opacity:.7}
+.kerr{font-size:var(--ss);color:#c62828}
+.demo-badge{display:inline-block;font-size:var(--ss);color:var(--txtc);background:rgba(0,0,0,.35);border-radius:2px;padding:.15em .7em;margin-left:.5em;vertical-align:middle}
+:root[data-theme=dark] .demo-badge{background:rgba(255,255,255,.2)}
+.thmb{position:fixed;right:clamp(12px,2vw,24px);bottom:clamp(12px,2vh,20px);z-index:9998;font-family:var(--body);font-size:var(--bs);border:1px solid var(--brd);background:var(--srf);color:var(--txt);border-radius:3px;padding:.4em .8em;cursor:pointer;backdrop-filter:blur(4px)}
+.attr{position:fixed;left:0;right:0;bottom:0;z-index:9997;font-family:var(--body);font-size:clamp(.65rem,1vw,.8rem);color:var(--sub);text-align:center;padding:2px 8px;opacity:.55;pointer-events:none}
+.apps .tab{margin-bottom:var(--cg)}
+.arow{display:grid;grid-template-columns:clamp(24px,4vw,40px) 1fr clamp(70px,10vw,110px) clamp(60px,8vw,90px);align-items:center;gap:clamp(.3rem,1vw,.8rem);padding:clamp(.25rem,.7vh,.55rem) clamp(.4rem,1vw,.8rem);border-bottom:1px solid var(--brd)}
+.arow .arn{font-family:var(--disp);color:var(--card);font-size:var(--ss)}
+.arow .anm{font-family:var(--body);font-size:var(--bs);color:var(--txt);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.arow .atk{font-family:var(--body);font-size:var(--ss);color:var(--sub);text-align:right}
+.arow .arq{font-family:var(--body);font-size:var(--ss);color:var(--sub);text-align:right;opacity:.7}
+.bench{display:flex;flex-direction:column;gap:clamp(.3rem,1vh,.8rem);max-height:min(70vh,560px);overflow-y:auto;padding-right:4px}
+.brow{display:grid;grid-template-columns:clamp(90px,14vw,180px) 1fr clamp(80px,12vw,160px) clamp(60px,9vw,110px) clamp(60px,9vw,110px);align-items:center;gap:clamp(.3rem,1vw,.8rem)}
+.brow .bnm{font-family:var(--body);font-size:var(--ss);color:var(--txt);font-weight:500;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brow .btr{display:flex;flex-direction:column;gap:3px}
+.btr .bar{height:clamp(8px,1.4vh,14px);background:var(--barbg);border-radius:2px;overflow:hidden;position:relative}
+.btr .fil{height:100%;background:var(--card);border-radius:2px;width:0;transition:width 1s var(--ease)}
+.btr .fil.alt{background:var(--warm)}
+.brow .bvl{font-family:var(--body);font-size:var(--ss);color:var(--txt);font-weight:600}
+.brow .bpr{font-family:var(--body);font-size:var(--ss);color:var(--sub);text-align:right}
+.blegend{display:flex;justify-content:center;gap:1.2em;margin-top:var(--cg);font-size:var(--ss);color:var(--sub)}
+.blegend .sw{display:inline-block;width:10px;height:10px;border-radius:2px;vertical-align:-1px;margin-right:.4em}
+.scwrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:0}
+.scat{width:min(92vw,900px);height:min(56vh,440px);border:1px solid var(--brd);border-radius:4px;background:var(--srf)}
+.scat text{font-family:var(--body);font-size:9px;fill:var(--sub)}
+.scat circle{cursor:pointer;transition:r .2s}
+.cmp{display:flex;flex-direction:column;gap:var(--cg);max-height:min(74vh,600px)}
+.cmp .pick{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(.25rem,.8vw,.5rem)}
+.chip{font-family:var(--body);font-size:var(--ss);padding:.3em .8em;border:1px solid var(--tabbrd);background:transparent;color:var(--sub);border-radius:999px;cursor:pointer;transition:all .2s}
+.chip.on{background:var(--card);color:var(--txtc);border-color:var(--card)}
+.chip:hover:not(.on){border-color:var(--card);color:var(--txt)}
+.ctbl{width:100%;border-collapse:collapse;font-size:var(--ss)}
+.ctbl th{font-family:var(--body);font-weight:600;color:var(--card);text-align:left;padding:clamp(.3rem,.8vh,.6rem) clamp(.4rem,1vw,.8rem);border-bottom:2px solid rgba(255,87,34,.3);white-space:nowrap}
+.ctbl td{padding:clamp(.25rem,.6vh,.5rem) clamp(.4rem,1vw,.8rem);color:var(--sub);border-bottom:1px solid var(--brd)}
+.ctbl td:first-child{color:var(--txt);font-weight:500}
+.trend{display:flex;flex-direction:column;align-items:center;gap:clamp(.3rem,1vh,.6rem)}
+.tline{width:min(92vw,900px);height:clamp(120px,26vh,240px)}
+.tline path{fill:none;stroke:var(--card);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
+.tline .fill{fill:rgba(255,87,34,.08);stroke:none}
+.tline circle{fill:var(--card)}
+.fchips{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(.25rem,.8vw,.5rem);margin-bottom:var(--cg)}
+</style>
+</head>
+<body>
+<div class="lo" id="lo"><div class="ls"></div><p class="lt">正在获取最新数据...</p></div>
+<div class="pb" id="pb"></div>
+<nav class="nd" id="nd"></nav>
+<div class="kh" id="kh">↑↓ ← → 空格键</div>
+
+<section class="slide ts" id="s0"><h1 class="rv">全球大模型<br>API 排行榜</h1><div class="db rv"></div><p class="sub rv" id="subtitle">2026年6月 · 全球大模型 API 月调用量 Top 10</p><div class="lb rv"><span class="d"></span><span id="ld">加载数据中...</span></div><div class="keybox" id="keybox"><input type="password" id="keyin" class="kin" placeholder="OpenRouter API Key（sk-or-v1-...）" autocomplete="off"><button id="keygo" class="kbtn">连接</button><span class="khint">仅存本地浏览器，用于调用 OpenRouter 官方排行榜数据</span></div></section>
+
+<section class="slide cs" id="s1"><div class="sh"><h2 class="rv" id="hl-title">数据亮点</h2></div><div class="ig" id="highlights"></div></section>
+
+<section class="slide cs" id="s2"><div class="sh"><h2 class="rv">数据来源</h2></div><div class="mg"><div class="mc2 rv"><div class="ic">1</div><h3>OpenRouter Rankings</h3><p>官方排行榜数据集，每日各模型真实 token 处理量</p></div><div class="mc2 rv"><div class="ic">2</div><h3>OpenRouter Models</h3><p>465+ 模型的上下文长度、定价与模态元数据</p></div><div class="mc2 rv"><div class="ic">3</div><h3>实时拉取</h3><p>每次访问自动请求最新数据，24h 本地缓存</p></div><div class="mc2 rv"><div class="ic">4</div><h3>降级策略</h3><p>无 Key 或请求失败时回退演示数据并明确标注</p></div></div></section>
+
+<section class="slide ms" id="s3"><div class="lp"><div class="rk rv">01</div><div class="mn rv" data-slot="m0-name">—</div><div class="mp rv" data-slot="m0-org">—</div><p class="md rv" data-slot="m0-desc">—</p><ul class="fl rv" data-slot="m0-feats"></ul></div><div class="rp"><div class="sc2 rs"><div class="bn" data-slot="m0-tokens">0</div><div class="sl2">tokens/日（OpenRouter）</div></div></div></section>
+
+<section class="slide ms" id="s4"><div class="lp"><div class="rk rv">02</div><div class="mn rv" data-slot="m1-name">—</div><div class="mp rv" data-slot="m1-org">—</div><p class="md rv" data-slot="m1-desc">—</p><ul class="fl rv" data-slot="m1-feats"></ul></div><div class="rp"><div class="sc2 rs"><div class="bn" data-slot="m1-tokens">0</div><div class="sl2">tokens/日（OpenRouter）</div></div></div></section>
+
+<section class="slide ms" id="s5"><div class="lp"><div class="rk rv">03</div><div class="mn rv" data-slot="m2-name">—</div><div class="mp rv" data-slot="m2-org">—</div><p class="md rv" data-slot="m2-desc">—</p><ul class="fl rv" data-slot="m2-feats"></ul></div><div class="rp"><div class="sc2 rs"><div class="bn" data-slot="m2-tokens">0</div><div class="sl2">tokens/日（OpenRouter）</div></div></div></section>
+
+<section class="slide ms" id="s6"><div class="lp"><div class="rk rv">04</div><div class="mn rv" data-slot="m3-name">—</div><div class="mp rv" data-slot="m3-org">—</div><p class="md rv" data-slot="m3-desc">—</p><ul class="fl rv" data-slot="m3-feats"></ul></div><div class="rp"><div class="sc2 rs"><div class="bn" data-slot="m3-tokens">0</div><div class="sl2">tokens/日（OpenRouter）</div></div></div></section>
+
+<section class="slide ms" id="s7"><div class="lp"><div class="rk rv">05</div><div class="mn rv" data-slot="m4-name">—</div><div class="mp rv" data-slot="m4-org">—</div><p class="md rv" data-slot="m4-desc">—</p><ul class="fl rv" data-slot="m4-feats"></ul></div><div class="rp"><div class="sc2 rs"><div class="bn" data-slot="m4-tokens">0</div><div class="sl2">tokens/日（OpenRouter）</div></div></div></section>
+
+<section class="slide ms" id="s8"><div class="lp"><div class="rk rv">06</div><div class="mn rv" data-slot="m5-name">—</div><div class="mp rv" data-slot="m5-org">—</div><p class="md rv" data-slot="m5-desc">—</p><ul class="fl rv" data-slot="m5-feats"></ul></div><div class="rp"><div class="sc2 rs"><div class="bn" data-slot="m5-tokens">0</div><div class="sl2">tokens/日（OpenRouter）</div></div></div></section>
+
+<section class="slide ms" id="s9"><div class="lp"><div class="rk rv">07</div><div class="mn rv" data-slot="m6-name">—</div><div class="mp rv" data-slot="m6-org">—</div><p class="md rv" data-slot="m6-desc">—</p><ul class="fl rv" data-slot="m6-feats"></ul></div><div class="rp"><div class="sc2 rs"><div class="bn" data-slot="m6-tokens">0</div><div class="sl2">tokens/日（OpenRouter）</div></div></div></section>
+
+<section class="slide ms" id="s10"><div class="lp"><div class="rk rv">08</div><div class="mn rv" data-slot="m7-name">—</div><div class="mp rv" data-slot="m7-org">—</div><p class="md rv" data-slot="m7-desc">—</p><ul class="fl rv" data-slot="m7-feats"></ul></div><div class="rp"><div class="sc2 rs"><div class="bn" data-slot="m7-tokens">0</div><div class="sl2">tokens/日（OpenRouter）</div></div></div></section>
+
+<section class="slide ms" id="s11"><div class="lp"><div class="rk rv">09</div><div class="mn rv" data-slot="m8-name">—</div><div class="mp rv" data-slot="m8-org">—</div><p class="md rv" data-slot="m8-desc">—</p><ul class="fl rv" data-slot="m8-feats"></ul></div><div class="rp"><div class="sc2 rs"><div class="bn" data-slot="m8-tokens">0</div><div class="sl2">tokens/日（OpenRouter）</div></div></div></section>
+
+<section class="slide ms" id="s12"><div class="lp"><div class="rk rv">10</div><div class="mn rv" data-slot="m9-name">—</div><div class="mp rv" data-slot="m9-org">—</div><p class="md rv" data-slot="m9-desc">—</p><ul class="fl rv" data-slot="m9-feats"></ul></div><div class="rp"><div class="sc2 rs"><div class="bn" data-slot="m9-tokens">0</div><div class="sl2">tokens/日（OpenRouter）</div></div></div></section>
+
+<section class="slide chs" id="s13"><h2 class="rv">每日 Token 调用量对比</h2><div class="cc" id="rankchart"></div></section>
+
+<section class="slide ts2" id="s14"><h2 class="rv">特性对比</h2><div class="fchips rv" id="fchips"></div><div style="overflow-x:auto;max-height:min(62vh,500px);overflow-y:auto"><table class="ct rv"><thead><tr><th>#</th><th>模型</th><th>厂商</th><th>上下文</th><th>输入价</th><th>多模态</th><th>模态</th></tr></thead><tbody id="ftable"></tbody></table></div></section>
+
+<section class="slide ts2 apps" id="s15a"><h2 class="rv">应用消耗榜<span class="demo-badge" id="ab-badge" style="display:none">LIVE</span></h2><p class="bt rv" style="text-align:center;margin:0 auto var(--cg)">谁在消耗这些 tokens —— OpenRouter 生态中真实应用排行</p><div class="tabs rv"><button class="tab active" data-appsort="popular">总消耗</button><button class="tab" data-appsort="trending">增速榜</button></div><div id="applist"></div></section>
+
+<section class="slide ts2" id="s15b"><h2 class="rv">性能基准<span class="demo-badge" id="bb-badge" style="display:none">LIVE</span></h2><p class="bt rv" style="text-align:center;margin:0 auto var(--cg)">智能指数 × 编程指数 —— Artificial Analysis 评分与日 token 量对照</p><p class="bt" id="bb-note" style="display:none;text-align:center;margin:0 auto var(--cg);color:#c62828"></p><div class="bench rv" id="benchlist"></div><div class="blegend rv"><span><span class="sw" style="background:var(--card)"></span>智能指数</span><span><span class="sw" style="background:var(--warm)"></span>编程指数</span></div></section>
+
+<section class="slide" id="s15c"><h2 class="rv" style="font-family:var(--disp);font-size:var(--h2);color:var(--txt);text-align:center;margin-bottom:var(--cg)">价格 × 性能 × 流量<span class="demo-badge" id="sc-badge" style="display:none">LIVE</span></h2><div class="scwrap rv"><svg class="scat" id="scatter" viewBox="0 0 900 440" preserveAspectRatio="xMidYMid meet"></svg><p class="bt" id="sc-note" style="display:none;text-align:center;color:#c62828"></p><p class="bt rv" style="font-size:var(--ss);color:var(--sub)">横轴：每 M 输入 token 价格（美元，对数）· 纵轴：智能指数 · 气泡大小：日 token 量 · 悬停查看详情</p></div></section>
+
+<section class="slide ts2" id="s15d"><h2 class="rv">模型对比器</h2><p class="bt rv" style="text-align:center;margin:0 auto var(--cg)">点选 2~3 个模型并排对比</p><div class="cmp rv"><div class="pick" id="cmppick"></div><div style="overflow-x:auto"><table class="ctbl" id="cmptbl"></table></div></div></section>
+
+<section class="slide qs" id="s16">
+<h2 class="rv">API 调用量趋势</h2><div class="trend rv" style="margin-bottom:var(--cg)"><svg class="tline" id="tline" viewBox="0 0 900 220" preserveAspectRatio="none"></svg><p class="bt" style="font-size:var(--ss);color:var(--sub)" id="tlineinfo"></p></div><div class="tabs rv">
+<button class="tab active" data-range="daily">每日</button>
+<button class="tab" data-range="weekly">每周</button>
+<button class="tab" data-range="monthly">每月</button>
+</div>
+<div class="qgrid rv" id="qgrid"></div>
+<div class="qchart rv" id="qchart"></div>
+<div class="qinfo rv" id="qinfo"></div>
+</section>
+
+<section class="slide sms" id="s17"><h2 class="rv">核心要点</h2><div class="db rv"></div><p class="st rv">中国模型以 6 席占据 Top 10 主导地位，DeepSeek 独占 3 席。<br>Anthropic 统治企业支出（40%），OpenAI 凭 GPT-5.5 紧追。<br>Agent 工作流驱动 58.9% 的 token 流量，成本敏感型路由成趋势。</p><a class="cta rv" href="#" onclick="location.reload();return false;">刷新数据</a><p class="dn rv" id="dn">每次访问自动刷新数据</p></section>
+
+<button class="thmb" id="thmb" title="切换明暗主题">◐</button>
+<div class="attr" id="attr"></div>
+
+<script>
+class SP{constructor(){this.slides=document.querySelectorAll('.slide');this.cs=0;this.ndc=document.getElementById('nd');this.pb=document.getElementById('pb');this.io();this.kn();this.tn();this.pp();this.nds();this.ba();this.ca()}io(){const o=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('sl');const i=Array.from(this.slides).indexOf(e.target);this.cs=i;this.un(i);this.up(i)}})},{threshold:.5});this.slides.forEach(s=>o.observe(s))}kn(){document.addEventListener('keydown',e=>{if(e.key==='ArrowDown'||e.key==='ArrowRight'||e.key===' '){e.preventDefault();this.gts(Math.min(this.cs+1,this.slides.length-1))}else if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();this.gts(Math.max(this.cs-1,0))}})}tn(){let s=0;document.addEventListener('touchstart',e=>{s=e.touches[0].clientY});document.addEventListener('touchend',e=>{const d=s-e.changedTouches[0].clientY;if(Math.abs(d)>50){if(d>0)this.gts(Math.min(this.cs+1,this.slides.length-1));else this.gts(Math.max(this.cs-1,0))}})}pp(){window.addEventListener('scroll',()=>{const s=window.scrollY/(document.body.scrollHeight-window.innerHeight);this.pb.style.width=(s*100)+'%'})}nds(){this.ndc.innerHTML='';this.slides.forEach((_,i)=>{const d=document.createElement('button');d.className='nt'+(i===0?' a':'');d.setAttribute('aria-label','Slide '+(i+1));d.addEventListener('click',()=>this.gts(i));this.ndc.appendChild(d)})}un(i){this.ndc.querySelectorAll('.nt').forEach((d,j)=>{d.classList.toggle('a',j===i)})}up(i){this.pb.style.width=((i+1)/this.slides.length*100)+'%'}gts(i){this.slides[i].scrollIntoView({behavior:'smooth'})}ba(){const o=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.bf').forEach((b,i)=>{setTimeout(()=>{b.style.width=b.dataset.width+'%'},i*80)})}})},{threshold:.3});document.querySelectorAll('.cc').forEach(c=>o.observe(c))}ca(){const o=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){const el=e.target;if(el.dataset.a)return;el.dataset.a='1';const t=parseFloat(el.dataset.value);let c=0;const s=t/40;const ti=setInterval(()=>{c+=s;if(c>=t){c=t;clearInterval(ti)}el.textContent=c<10?c.toFixed(1):Math.round(c)},30)}})},{threshold:.5});document.querySelectorAll('.bn[data-value]').forEach(n=>o.observe(n))}}
+class DM{
+constructor(){this.k='llm-rk-real-v1';this.kk='llm-rk-key';this.ex=24*60*60*1000;this.api='https://openrouter.ai/api/v1';this.live=false;this.models=[];this.meta=null}
+getKey(){try{return localStorage.getItem(this.kk)||''}catch{return''}}
+setKey(v){try{v?localStorage.setItem(this.kk,v):localStorage.removeItem(this.kk)}catch{}}
+async fd(){const cached=this.gc();if(cached&&!this.ie(cached)){this.ad(cached);return}
+const key=this.getKey();
+if(key){try{const d=await this.fetchReal(key);this.sc(d);this.ad(d);return}catch(e){this.showErr(e.message)}}
+this.ad(this.ge())}
+async fetchReal(key){
+const end=new Date(Date.now()-86400000);const start=new Date(end);start.setDate(start.getDate()-29);
+const f=d=>d.toISOString().slice(0,10);
+const uRank=`${this.api}/datasets/rankings-daily?start_date=${f(start)}&end_date=${f(end)}`;
+const h={'Authorization':'Bearer '+key};
+let rank,mods,apps,bench;
+try{[rank,mods,apps,bench]=await Promise.all([
+fetch(uRank,{headers:h}).then(r=>{if(!r.ok)throw new Error('rankings '+r.status);return r.json()}),
+fetch(this.api+'/models').then(r=>{if(!r.ok)throw new Error('models '+r.status);return r.json()}),
+fetch(`${this.api}/datasets/app-rankings?sort=popular&limit=20`,{headers:h}).then(r=>{if(!r.ok)throw new Error('apps '+r.status);return r.json()}).catch(e=>{console.warn('[OpenRouter] app-rankings 获取失败，应用榜回退演示数据:',e.message);return null}),
+fetch(`${this.api}/benchmarks?source=artificial-analysis&max_results=50`,{headers:h}).then(r=>{if(!r.ok)throw new Error('benchmarks '+r.status);return r.json()}).catch(e=>{console.warn('[OpenRouter] benchmarks 获取失败，基准/散点回退演示数据:',e.message);return null})
+])}catch(e){throw new Error('OpenRouter 请求失败: '+e.message)}
+if(!rank.data||!rank.data.length)throw new Error('rankings 数据为空');
+const byDate={};
+rank.data.forEach(r=>{if(r.model_permaslug==='other')return;(byDate[r.date]=byDate[r.date]||[]).push({slug:r.model_permaslug,tokens:+r.total_tokens})});
+const dates=Object.keys(byDate).sort();
+const latest=dates[dates.length-1];const prev=dates[dates.length-2]||latest;
+const top=byDate[latest].sort((a,b)=>b.tokens-a.tokens).slice(0,10);
+const mmap={};(mods.data||[]).forEach(m=>mmap[m.id]=m);
+const resolve=slug=>{
+if(mmap[slug])return mmap[slug];
+const base=slug.replace(/:[^:]*$/,'');
+return mmap[base]||mmap[base+'-latest']||Object.keys(mmap).map(k=>mmap[k]).find(m=>m.canonical_slug===slug)||null};
+const models=top.map((r,i)=>{const m=resolve(r.slug);const author=slug=>slug.split('/')[0];
+return{r:i+1,slug:r.slug,n:m?m.name:r.slug,p:m?m.name.split(':')[0]||author(r.slug):author(r.slug),
+tokens:r.tokens,ctx:m?m.context_length:null,price:m?+m.pricing.prompt:null,
+mod:m?(m.architecture&&m.architecture.input_modalities)||[]:[],created:m?m.created:null,
+chg:this.pct(byDate[prev],r.slug,r.tokens),desc:this.bld(m,r.tokens)}});
+const appsData=apps&&apps.data?apps.data.map(a=>({rank:a.rank,n:a.app_name,tokens:+a.total_tokens,req:a.total_requests})):null;
+let benchData=null;
+if(bench&&bench.data&&bench.data.length){const slugTokens={};byDate[latest].forEach(x=>slugTokens[x.slug]=x.tokens);
+benchData=bench.data.map(b=>{const slug=b.model_permaslug;const m2=resolve(slug);
+return{slug,n:b.display_name||slug,intel:b.intelligence_index,coding:b.coding_index,agentic:b.agentic_index,
+price:b.pricing?+b.pricing.prompt:(m2?+m2.pricing.prompt:null),
+tokens:slugTokens[slug]||slugTokens[slug.replace(/:[^:]*$/,'')]||0}}).filter(b=>b.intel!=null)};
+return{ts:Date.now(),live:true,models,apps:appsData,bench:benchData,byDate,dates,meta:rank.meta||null}}
+pct(list,slug,now){const e=list.find(x=>x.slug===slug);if(!e||!e.tokens)return'+0%';const d=(now-e.tokens)/e.tokens*100;return(d>=0?'+':'')+d.toFixed(0)+'%'}
+fmtCtx(c){return c>=1048576?Math.round(c/1048576*10)/10+'M':Math.round(c/1024)+'K'}
+bld(m,t){if(!m)return'模型元数据未收录。';
+const ctx=this.fmtCtx(m.context_length);
+const pr=+m.pricing.prompt*1e6;const feats=[`${ctx} 上下文窗口`];
+if((m.architecture&&m.architecture.input_modalities||[]).some(x=>x!=='text'))feats.push('原生多模态输入');
+if(m.pricing.prompt==='0'&&m.pricing.completion==='0')feats.push('免费额度');
+else feats.push(`$${pr.toFixed(2)}/M 输入 tokens`);
+if(m.supported_parameters&&m.supported_parameters.includes('reasoning'))feats.push('支持深度推理');
+if(m.hugging_face_id)feats.push('开源权重');
+return feats.join(' · ')}
+sc(d){try{localStorage.setItem(this.k,JSON.stringify({ts:d.ts,live:true,models:d.models,apps:d.apps||null,bench:d.bench||null,byDate:d.byDate,dates:d.dates,meta:d.meta}))}catch{}}
+gc(){try{const r=localStorage.getItem(this.k);return r?JSON.parse(r):null}catch{return null}}
+ie(d){return Date.now()-d.ts>this.ex}
+showErr(m){const e=document.getElementById('ld');if(e){e.textContent='真实数据获取失败，已回退演示数据';e.parentElement.insertAdjacentHTML('afterend','<p class="kerr rv">'+m+' · 检查 Key 或稍后重试</p>')}}
+ge(){return{ts:Date.now(),live:false,byDate:null,dates:null,meta:null,apps:null,bench:null,models:[{r:1,n:'DeepSeek-V4-Flash',p:'DeepSeek',c:15.9},{r:2,n:'Tencent Hy3 Preview',p:'Tencent',c:12.6},{r:3,n:'MiniMax M3',p:'MiniMax AI',c:10.7},{r:4,n:'MiMo-V2.5',p:'Xiaomi',c:9.4},{r:5,n:'Claude Sonnet 4.6',p:'Anthropic',c:5.8},{r:6,n:'DeepSeek-V3.2',p:'DeepSeek',c:5.6},{r:7,n:'Gemini 3 Flash Preview',p:'Google',c:4.5},{r:8,n:'DeepSeek-V4-Pro',p:'DeepSeek',c:4.3},{r:9,n:'GPT-5.5',p:'OpenAI',c:3.5},{r:10,n:'Claude Opus 4.7',p:'Anthropic',c:3.0}]}}
+demoApps(){return[{rank:1,n:'Cline',tokens:4.2e12,req:182e6},{rank:2,n:'Roo Code',tokens:3.1e12,req:140e6},{rank:3,n:'Kilo Code',tokens:2.4e12,req:95e6},{rank:4,n:'Cursor',tokens:1.9e12,req:88e6},{rank:5,n:'Continue',tokens:1.2e12,req:54e6},{rank:6,n:'SillyTavern',tokens:0.9e12,req:210e6},{rank:7,n:'Open WebUI',tokens:0.7e12,req:41e6},{rank:8,n:'LobeChat',tokens:0.5e12,req:33e6},{rank:9,n:'Cherry Studio',tokens:0.4e12,req:28e6},{rank:10,n:'Droid',tokens:0.3e12,req:12e6}]}
+demoBench(){const spread=[.05,.1,.2,.45,1,2,4,8,15,30];const t=this.models.length?this.models.map((m,i)=>({n:m.n,price:spread[i%spread.length]*1e-6,tokens:(m.c||5)*1e12})):[];return t.map((m,i)=>({slug:'demo',n:m.n,intel:72-i*2.4,coding:68-i*2.8,agentic:65-i*3,price:m.price,tokens:m.tokens}))}
+fmtT(v){if(v>=1e12)return(v/1e12).toFixed(2)+'T';if(v>=1e9)return(v/1e9).toFixed(1)+'B';if(v>=1e6)return(v/1e6).toFixed(1)+'M';return v}
+ad(d){this.models=d.models;this.live=!!d.live;
+const el=document.getElementById('ld');const nt=document.getElementById('dn');const st=document.getElementById('subtitle');
+const t=new Date(d.ts);const ds=t.getFullYear()+'.'+String(t.getMonth()+1).padStart(2,'0')+'.'+String(t.getDate()).padStart(2,'0');
+if(el)el.textContent=(d.live?'实时数据 ':'演示数据 ')+ds;
+if(st)st.innerHTML=(d.live?`OpenRouter 官方榜单 · 每日真实 token 处理量 Top 10 · <span class="demo-badge">LIVE</span>`:`OpenRouter 榜单 · 每日真实 token 处理量 Top 10 · <span class="demo-badge">DEMO</span>`);
+if(nt)nt.textContent=(d.live?'数据源: OpenRouter Rankings API · ':'演示数据 · ')+'最后刷新: '+t.toLocaleString();
+const mx=d.models[0].c!==undefined?d.models[0].c:d.models[0].tokens;
+this.models.forEach((m,i)=>{
+const name=document.querySelector(`[data-slot="m${i}-name"]`);if(name)name.textContent=m.n;
+const org=document.querySelector(`[data-slot="m${i}-org"]`);if(org)org.textContent=m.p;
+const desc=document.querySelector(`[data-slot="m${i}-desc"]`);if(desc)desc.textContent=m.desc||this.bld(null,null);
+const feats=document.querySelector(`[data-slot="m${i}-feats"]`);
+if(feats)feats.innerHTML=(m.featList||this.featOf(m)).map(f=>`<li>${f}</li>`).join('');
+const bn=document.querySelector(`[data-slot="m${i}-tokens"]`);if(bn)bn.dataset.value=this.live?this.fmtT(m.tokens):(m.c||0)});
+this.rchart(d);this.ftable(d);this.hl(d);
+this.renderApps&&this.renderApps(d);this.renderBench&&this.renderBench(d);this.renderScatter&&this.renderScatter(d);this.renderCmp&&this.renderCmp(d);this.renderTline&&this.renderTline(d)}
+featOf(m){if(!this.live)return['演示数据 · 未接入真实源','填入 OpenRouter Key 获取实时榜单','数据来源 openrouter.ai/rankings'];
+const f=[];if(m.ctx)f.push(this.fmtCtx(m.ctx)+' 上下文');
+if(m.price!==null&&m.price!==undefined)f.push('$'+(m.price*1e6).toFixed(2)+'/M 输入');
+if(m.mod&&m.mod.some(x=>x!=='text'))f.push('多模态: '+m.mod.filter(x=>x!=='text').join('/'));
+if(m.chg)f.push('日环比 '+m.chg);return f.length?f:['元数据未收录']}
+rchart(d){const cc=document.getElementById('rankchart');if(!cc)return;
+const mx=d.models[0].c!==undefined?d.models[0].c:d.models[0].tokens;
+cc.innerHTML=d.models.map(m=>{const v=this.live?m.tokens:m.c;const lbl=this.live?this.fmtT(v):(v+'T');
+return`<div class="cr rv"><span class="lb2">${m.n}</span><div class="bt2"><div class="bf" data-width="${Math.round(v/mx*100)}"></div></div><span class="vl">${lbl}</span></div>`}).join('')}
+ftable(d){const tb=document.getElementById('ftable');if(!tb)return;
+tb.innerHTML=d.models.map(m=>{
+const ctx=m.ctx?this.fmtCtx(m.ctx):'—';
+const pr=(this.live&&m.price!==null&&m.price!==undefined)?'$'+(m.price*1e6).toFixed(2):'—';
+const mm=(m.mod&&m.mod.length)?m.mod.join('+'):'text';
+return`<tr><td class="rc">${m.r}</td><td class="mc">${m.n}</td><td>${m.p}</td><td>${ctx}</td><td>${pr}</td><td>${mm}</td></tr>`}).join('')}
+hl(d){const h=document.getElementById('highlights');if(!h)return;
+let cards;
+if(this.live){
+const total=d.models.reduce((a,m)=>a+m.tokens,0);
+const dates=d.dates||[];const byDate=d.byDate||{};
+const totalDay=dates.map(dt=>({dt,v:byDate[dt].reduce((a,x)=>a+x.tokens,0)}));
+const first=totalDay[0]?totalDay[0].v:0;const last=totalDay.length?totalDay[totalDay.length-1].v:0;
+const chg=first?((last-first)/first*100).toFixed(1):'0';
+const cn=d.models.filter(m=>/deepseek|z-ai|qwen|moonshot|minimax|xiaomi|baidu|tencent|stepfun|01-ai|intern/i.test(m.slug||'')).length;
+const mm=d.models.filter(m=>m.mod&&m.mod.some(x=>x!=='text')).length;
+const q1=d.models.slice(0,3).map(m=>m.n).join(' / ');
+cards=[['TR',`Top 3 每日合计 ${this.fmtT(total)} tokens`,`前三是 ${q1}`],
+['CN',`中国厂商模型 ${cn}/10 席`,cn>=5?'中国模型主导 OpenRouter 流量':'上榜厂商覆盖中国主流力量'],
+['+↓',`30 天日总量变化 ${chg>0?'+':''}${chg}%`,`从 ${this.fmtT(first)} 到 ${this.fmtT(last)}`],
+['MM',`多模态模型 ${mm}/10 席`,'图像/视频输入能力渐成标配']]}
+else{cards=[['CN','中国模型主导 API 流量','Top 10 中 6 个来自中国（演示数据）'],
+['AI','Agent 工作流爆发','58.9% 的 token 来自工具调用请求'],
+['$','Anthropic 统治企业支出','占企业 LLM API 支出 40%，领先 OpenAI'],
+['+13%','全球周调用 36.1T tokens','连续 7 周增长，+13.5% WoW']]}
+h.innerHTML=cards.map(([a,t,sub])=>`<div class="ic2 rv"><span class="nm">${a}</span><span class="tx"><strong style="color:var(--txt)">${t}</strong><br>${sub}</span></div>`).join('')}
+renderApps(d){this.appsSort='popular';this.appsData=d.live?(d.apps||[]):this.demoApps();
+const bd=document.getElementById('ab-badge');if(bd)bd.style.display=(d.live&&this.appsData.length)?'inline-block':'none';
+const draw=()=>{const list=document.getElementById('applist');if(!list)return;
+const mx=Math.max(...this.appsData.map(a=>a.tokens));
+list.innerHTML=this.appsData.slice(0,10).map(a=>`<div class="arow"><span class="arn">${String(a.rank).padStart(2,'0')}</span><span class="anm">${a.n}</span><span class="atk">${this.fmtT(a.tokens)}</span><span class="arq">${a.req?(a.req>=1e6?(a.req/1e6).toFixed(0)+'M req':(a.req/1e3).toFixed(0)+'K req'):'—'}</span></div>`).join('')};
+document.querySelectorAll('[data-appsort]').forEach(t=>{t.classList.toggle('active',(t.dataset.appsort||'popular')===this.appsSort)});
+draw();
+if(!this._appsBound){this._appsBound=true;document.querySelectorAll('[data-appsort]').forEach(t=>t.addEventListener('click',()=>{
+this.appsSort=t.dataset.appsort;
+if(this.live&&!this.appsTrending){this.fetchApps('trending').then(td=>{this.appsTrending=td;this.appsData=this.appsSort==='trending'?td:this.appsData;draw()}).catch(()=>{});if(this.appsSort==='trending')return}
+if(this.live&&this.appsTrending){this.appsData=this.appsSort==='trending'?this.appsTrending:(this.appsBase||this.appsData)}
+draw()}))}}
+async fetchApps(sort){const h={'Authorization':'Bearer '+this.getKey()};
+const r=await fetch(`${this.api}/datasets/app-rankings?sort=${sort}&limit=20`,{headers:h});
+if(!r.ok)throw new Error('apps '+r.status);const j=await r.json();
+return j.data.map(a=>({rank:a.rank,n:a.app_name,tokens:+a.total_tokens,req:a.total_requests}))}
+renderBench(d){const fb=!(d.live&&d.bench&&d.bench.length);
+this.benchData=fb?this.demoBench():d.bench;
+const bd=document.getElementById('bb-badge');if(bd)bd.style.display=(d.live&&!fb)?'inline-block':'none';
+const list=document.getElementById('benchlist');if(!list)return;
+this.setNotice('bb-note',fb,d.live);
+const top=this.benchData.slice(0,12);const mxI=Math.max(...top.map(b=>b.intel||0),1);const mxC=Math.max(...top.map(b=>b.coding||0),1);
+list.innerHTML=top.map(b=>`<div class="brow"><span class="bnm" title="${b.n}">${b.n}</span>
+<span class="btr"><div class="bar"><div class="fil" data-w="${Math.round((b.intel||0)/mxI*100)}"></div></div><div class="bar"><div class="fil alt" data-w="${Math.round((b.coding||0)/mxC*100)}"></div></div></span>
+<span class="bpr">${b.price!=null?'$'+(b.price*1e6).toFixed(2)+'/M':'—'}</span>
+<span class="bvl">${b.intel!=null?b.intel.toFixed(1):'—'}</span>
+<span class="bvl">${b.coding!=null?b.coding.toFixed(1):'—'}</span></div>`).join('');
+this.animBars(list)}
+animBars(scope){const bars=scope.querySelectorAll('.fil');bars.forEach((b,i)=>setTimeout(()=>{b.style.width=b.dataset.w+'%'},i*40))}
+setNotice(id,fb,live){const el=document.getElementById(id);if(!el)return;
+el.textContent=fb?(live?'该 Key 暂不可用此数据集 · 当前为演示数据':'演示数据 · 接入 Key 后为真实数据'):'';
+el.style.display=fb?'block':'none'}
+renderScatter(d){const svg=document.getElementById('scatter');if(!svg)return;
+const fb=!(d.live&&d.bench&&d.bench.length);
+const data=fb?this.demoBench().map(b=>({...b,price:b.price||1e-7})):(d.bench||[]).filter(b=>b.price!=null&&b.price>0&&b.intel!=null&&b.tokens>0);
+const W=900,H=440,padL=46,padR=16,padT=16,padB=36;
+if(!data.length){svg.innerHTML=`<text x="${W/2}" y="${H/2}" text-anchor="middle">暂无基准数据</text>`;return}
+this.setNotice('sc-note',fb,d.live);
+const badge=document.getElementById('sc-badge');if(badge)badge.style.display=(d.live&&!fb)?'inline-block':'none';
+const pr=data.map(b=>b.price*1e6);const lo=Math.floor(Math.log10(Math.min(...pr)));const hi=Math.ceil(Math.log10(Math.max(...pr)));
+const lg=v=>padL+(Math.log10(v)-lo)/(hi-lo||1)*(W-padL-padR);
+const iy=v=>H-padB-(v/100)*(H-padT-padB);
+const mxd=Math.max(...data.map(b=>b.tokens||0),1);
+let grid='';for(let e=lo;e<=hi;e++){const x=lg(Math.pow(10,e));grid+=`<line x1="${x}" y1="${padT}" x2="${x}" y2="${H-padB}" stroke="var(--brd)" stroke-width="1"/><text x="${x}" y="${H-padB+14}" text-anchor="middle">$${Math.pow(10,e).toFixed(Math.abs(e)>1?0:2)}</text>`}
+for(let v=0;v<=100;v+=25){const y=iy(v);grid+=`<line x1="${padL}" y1="${y}" x2="${W-padR}" y2="${y}" stroke="var(--brd)" stroke-width="1"/><text x="${padL-6}" y="${y+3}" text-anchor="end">${v}</text>`}
+const dots=data.map(b=>{const x=lg(b.price*1e6);const y=iy(b.intel);const r=4+Math.sqrt((b.tokens||0)/mxd)*16;
+return`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.toFixed(1)}" fill="rgba(255,87,34,.55)" stroke="var(--card)" stroke-width="1.5"><title>${b.n}\n智能 ${b.intel!=null?b.intel.toFixed(1):'—'} · 编程 ${b.coding!=null?b.coding.toFixed(1):'—'}\n$${(b.price*1e6).toFixed(3)}/M · ${this.fmtT(b.tokens||0)} tokens/日</title></circle>`}).join('');
+svg.innerHTML=`<text x="${W/2}" y="${H-4}" text-anchor="middle">每 M 输入 token 价格（对数轴）→</text><text x="10" y="${H/2}" transform="rotate(-90 10 ${H/2})" text-anchor="middle">智能指数 →</text>${grid}${dots}`}
+renderTline(d){const svg=document.getElementById('tline');const info=document.getElementById('tlineinfo');if(!svg)return;
+let pts;
+if(d.live&&d.dates&&d.byDate){pts=d.dates.map(dt=>({day:dt.slice(5).replace('-','/'),v:d.byDate[dt].reduce((a,x)=>a+x.tokens,0)})).slice(-30)}
+else{const base=[15.9,12.6,10.7,9.4,5.8,5.6,4.5,4.3,3.5,3.0].reduce((a,b)=>a+b,0)*1.2;pts=[];for(let i=29;i>=0;i--){const dt=new Date();dt.setDate(dt.getDate()-i);pts.push({day:dt.getMonth()+1+'/'+dt.getDate(),v:base*(1+Math.sin(i/4)*.04+(Math.random()-.5)*.05)})}}
+const W=900,H=220;const mx=Math.max(...pts.map(p=>p.v));const mn=Math.min(...pts.map(p=>p.v));
+const X=i=>i/(pts.length-1)*W;const Y=v=>H-20-((v-mn)/(mx-mn||1))*(H-40);
+const line=pts.map((p,i)=>`${i?'L':'M'}${X(i).toFixed(1)},${Y(p.v).toFixed(1)}`).join('');
+const area=line+`L${W},${H}L0,${H}Z`;
+svg.innerHTML=`<path class="fill" d="${area}"/><path d="${line}"/>${pts.map((p,i)=>i%6===0||i===pts.length-1?`<circle cx="${X(i).toFixed(1)}" cy="${Y(p.v).toFixed(1)}" r="3"><title>${p.day} · ${this.fmtT(p.v)}</title></circle>`:'').join('')}`;
+if(info)info.innerHTML=d.live?`近 30 天 Top10 日 token 总量 · ${this.fmtT(mn)} → ${this.fmtT(mx)}`:`演示趋势（30 天）· 接入 Key 后为真实数据`}
+renderCmp(d){const pick=document.getElementById('cmppick');const tbl=document.getElementById('cmptbl');if(!pick||!tbl)return;
+if(!this._cmpSel)this._cmpSel=new Set();
+if(!this._cmpBound){this._cmpBound=true;
+pick.addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;
+if(this._cmpSel.has(c.dataset.i)&&this._cmpSel.size>0)this._cmpSel.delete(c.dataset.i);else if(this._cmpSel.size>=3)return;else this._cmpSel.add(c.dataset.i);
+this.drawCmp()})}
+pick.innerHTML=d.models.map((m,i)=>`<button class="chip${this._cmpSel.has(String(i))?' on':''}" data-i="${i}">${m.n}</button>`).join('');
+this.drawCmp()}
+drawCmp(){const tbl=document.getElementById('cmptbl');if(!tbl)return;
+const sel=[...this._cmpSel].map(Number).filter(i=>this.models[i]);
+if(!sel.length){tbl.innerHTML='';return}
+const ms=sel.map(i=>this.models[i]);
+const rows=[['厂商',...ms.map(m=>m.p)],['日 token 量',...ms.map(m=>this.live?this.fmtT(m.tokens):(m.c+'T'))],
+['上下文',...ms.map(m=>m.ctx?this.fmtCtx(m.ctx):'—')],['输入价 /M',...ms.map(m=>m.price!=null?'$'+(m.price*1e6).toFixed(2):'—')],
+['多模态',...ms.map(m=>m.mod&&m.mod.some(x=>x!=='text')?'是':'否')],['日环比',...ms.map(m=>m.chg||'—')]];
+tbl.innerHTML=`<thead><tr><th>指标</th>${ms.map(m=>`<th>${m.n}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr><td>${r[0]}</td>${r.slice(1).map(v=>`<td>${v}</td>`).join('')}</tr>`).join('')}</tbody>`}
+filterVendors(){const chips=document.getElementById('fchips');const tb=document.getElementById('ftable');if(!chips||!tb)return;
+const vendors=[...new Set(this.models.map(m=>m.p))];
+let sel=null;
+chips.innerHTML=`<button class="chip on" data-v="">全部</button>`+vendors.map(v=>`<button class="chip" data-v="${v}">${v}</button>`).join('');
+chips.addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;
+sel=sel===c.dataset.v?null:c.dataset.v||null;
+chips.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',sel===null?x.dataset.v==='':x.dataset.v===sel));
+tb.querySelectorAll('tr').forEach(tr=>{const show=!sel||tr.children[2].textContent===sel;tr.style.display=show?'':'none'})})}
+}
+document.addEventListener('DOMContentLoaded',async()=>{const dm=new DM();await dm.fd();setTimeout(()=>{document.getElementById('lo').classList.add('h')},600);new SP();new QR(dm);const h=document.getElementById('kh');let hd=false;const hide=()=>{if(!hd){h.style.opacity='0';hd=true}};document.addEventListener('keydown',hide);document.addEventListener('touchstart',hide);setTimeout(()=>{h.style.opacity='0'},8000);
+const go=document.getElementById('keygo');const ki=document.getElementById('keyin');
+if(go&&ki){go.addEventListener('click',async()=>{const v=ki.value.trim();if(!v)return;dm.setKey(v);location.reload()});ki.addEventListener('keydown',e=>{if(e.key==='Enter')go.click()});if(dm.getKey())ki.placeholder='已保存 Key · 可更换'}
+const tb=document.getElementById('thmb');const savedTheme=localStorage.getItem('llm-rk-theme');
+if(savedTheme==='dark'||(!savedTheme&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.dataset.theme='dark';
+tb.addEventListener('click',()=>{const next=document.documentElement.dataset.theme==='dark'?'light':'dark';
+if(next==='dark')document.documentElement.dataset.theme='dark';else delete document.documentElement.dataset.theme;
+localStorage.setItem('llm-rk-theme',next)});
+dm.filterVendors();
+const attr=document.getElementById('attr');if(attr)attr.textContent='Source: OpenRouter (openrouter.ai/rankings), as of '+(dm.meta&&dm.meta.as_of?dm.meta.as_of.slice(0,10):'demo data')+'. Licensed under CC BY 4.0.'});
+
+class QR{
+constructor(dm){this.dm=dm;this.range='daily';this.bind();this.render()}
+names(){return this.dm&&this.dm.models.length?this.dm.models.map(m=>m.n):['DeepSeek-V4-Flash','Tencent Hy3','MiniMax M3','MiMo-V2.5','Claude Sonnet 4.6','DeepSeek-V3.2','Gemini 3 Flash','DeepSeek-V4-Pro','GPT-5.5','Claude Opus 4.7']}
+dailySeries(){
+if(this.dm&&this.dm.live&&this.dm.dates&&this.dm.byDate){
+const byDate=this.dm.byDate;const dates=this.dm.dates;const slugs=this.dm.models.map(m=>m.slug);
+return dates.map(dt=>{const row=byDate[dt];
+const vals=slugs.map(s=>{const e=row.find(x=>x.slug===s);return e?+(e.tokens/1e12).toFixed(2):0});
+return{day:dt.slice(5).replace('-','/'),vals,total:+vals.reduce((a,b)=>a+b,0).toFixed(2)}}).slice(-30)}
+const base=[15.9,12.6,10.7,9.4,5.8,5.6,4.5,4.3,3.5,3.0];
+const g=n=>{const a=[];for(let i=n-1;i>=0;i--){const vals=base.map(v=>+(v*(1+(Math.random()-.5)*.1)).toFixed(2));a.push(vals)}return a};
+const d=g(7).map((vals,i)=>{const dt=new Date();dt.setDate(dt.getDate()-(6-i));return{day:dt.getMonth()+1+'/'+dt.getDate(),vals,total:+vals.reduce((a,b)=>a+b,0).toFixed(2)}});
+const w=g(4).map((vals,i)=>({day:'W'+(4-i),vals,total:+vals.reduce((a,b)=>a+b,0).toFixed(2)}));
+const m=g(6).map((vals,i)=>({day:(6-i)+'月',vals,total:+vals.reduce((a,b)=>a+b,0).toFixed(2)}));
+return{daily:d,weekly:w,monthly:m}[this.range]||d}
+getData(){const d=this.dailySeries();
+if(this.range==='daily')return d.slice(-7);
+if(this.range==='weekly'){const out=[];for(let i=d.length;i>0;i-=7){const c=d.slice(Math.max(0,i-7),i);out.unshift(this.sum(c,c[0].day+'~'+c[c.length-1].day))}return out.slice(-4)}
+return[this.sum(d,d[0].day+'~'+d[d.length-1].day)]}
+sum(c,lbl){const vals=c[0].vals.map((_,j)=>+c.reduce((a,x)=>a+x.vals[j],0).toFixed(2));return{day:lbl,vals,total:+vals.reduce((a,b)=>a+b,0).toFixed(2)}}
+bind(){document.querySelectorAll('.tab').forEach(t=>{t.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));t.classList.add('active');this.range=t.dataset.range;this.render()})})}
+render(){
+const data=this.getData();const latest=data[data.length-1];const prev=data[data.length-2]||latest;const max=Math.max(...latest.vals)||1;
+const names=this.names();const qg=document.getElementById('qgrid');
+const totalNow=latest.total;const totalPrev=prev.total;const totalChg=totalPrev?((totalNow-totalPrev)/totalPrev*100).toFixed(1):'0';
+const peakModel=names[latest.vals.indexOf(Math.max(...latest.vals))]||'—';
+const unit=this.dm&&this.dm.live?'':'（演示）';
+qg.innerHTML=`<div class="qstat"><div class="qn">${totalNow}T</div><div class="ql2">Top10 token 总量${unit}</div></div><div class="qstat"><div class="qn ${totalChg>0?'trend-up':'trend-down'}">${totalChg>0?'+':''}${totalChg}%</div><div class="ql2">较上一期</div></div><div class="qstat"><div class="qn">${peakModel}</div><div class="ql2">调用量最高模型</div></div>`;
+const qc=document.getElementById('qchart');
+qc.innerHTML=latest.vals.map((v,i)=>`<div class="qrow"><span class="ql">${names[i]}</span><div class="qb"><div class="qf" data-w="${Math.round(v/max*100)}"></div></div><span class="qv">${v}T</span></div>`).join('');
+setTimeout(()=>{qc.querySelectorAll('.qf').forEach((f,i)=>{setTimeout(()=>{f.style.width=f.dataset.w+'%'},i*60)})},100);
+const info=document.getElementById('qinfo');
+info.innerHTML=`数据范围: <strong>${data[0].day}</strong> → <strong>${latest.day}</strong> · 共 ${data.length} 期 · 点击标签切换`;
+}}
+</script>
+</body>
+</html>

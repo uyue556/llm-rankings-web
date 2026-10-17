@@ -1,0 +1,22 @@
+# 本地/系统
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
+
+# 密钥与本地配置（切勿提交真实 OpenRouter Key）
+.env
+.env.*
+*.key
+*.secret
+secrets.*
+
+# 临时文件
+*.tmp
+*.log
+node_modules/
+.playwright-mcp/
